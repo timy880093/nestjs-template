@@ -1,0 +1,4 @@
+
+### get all ticket from mvdis
+GET {{url}}/mvdis/owner
+Authorization: Bearer {{token}}

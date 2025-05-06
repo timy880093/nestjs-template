@@ -1,0 +1,50 @@
+{
+  "id": "tr_Y2xpokQBEb3etcak",
+  "object": "transaction",
+  "livemode": false,
+  "authentication_token": "BWpaHzSiiZgW2Nskd_SP6sRp",
+  "atone_transaction_no": "mcc00374-00001-241101000001",
+  "aftee_transaction_no": "mcc00374-00001-241101000001",
+  "shop_transaction_no": "2024060440137446",
+  "user_no": "timmy",
+  "amount": 1000,
+  "japanese_yen_amount": null,
+  "authorization_result": 1,
+  "authorization_result_ng_reason": null,
+  "amount_refund_total": 0,
+  "registration_datetime": "2024-11-01 17:40:51",
+  "sales_settled_datetime": null,
+  "transaction_options": null,
+  "related_transaction": null,
+  "updated_transactions": null,
+  "description": null,
+  "customer": {
+    "object": "customer",
+    "customer_name": "timmy",
+    "customer_family_name": null,
+    "customer_given_name": null,
+    "phone_number": "0909999981",
+    "birthday": null,
+    "sex_division": null,
+    "company_name": null,
+    "department": null,
+    "zip_code": null,
+    "address": null,
+    "tel": null,
+    "email": "timmy@suodata.com",
+    "total_purchase_count": null,
+    "total_purchase_amount": null
+  },
+  "dest_customers": [],
+  "items": [
+    {
+      "object": "item",
+      "shop_item_id": "ticket-service-fee",
+      "item_name": "服務費",
+      "item_price": 1000,
+      "item_count": 1,
+      "item_url": null
+    }
+  ],
+  "refunds": null
+}

@@ -1,0 +1,2 @@
+### 取得動態罰金範圍
+GET {{url}}/penalty/range

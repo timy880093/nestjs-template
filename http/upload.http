@@ -1,0 +1,12 @@
+### upload file from local
+POST {{url}}/upload/file
+Authorization: Bearer {{token}}
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file"; filename="課程行銷EDM 2.jpg"
+Content-Type: image/jpeg
+
+< /Users/timmy/Downloads/課程行銷EDM 2.jpg
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW--

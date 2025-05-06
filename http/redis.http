@@ -1,0 +1,22 @@
+###   @Post('set/:key/:value')
+POST {{url}}/redis/set/test/vvv2
+Authorization: Bearer {{token}}
+
+###   @Get('get/:key')
+GET {{url}}/redis/get/test2
+Authorization: Bearer {{token}}
+
+### @Post('lock/:key/:ttl')
+POST {{url}}/redis/lock/test2/10
+Authorization: Bearer {{token}}
+
+### rename hash key
+POST {{url}}/redis/rename-hash-key
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "hashKey": "event",
+  "oldKey": "trackAppealEntry",
+  "newKey": "appealEntry"
+}

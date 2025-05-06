@@ -1,0 +1,13 @@
+### getOrderForSecond 取得訂單資訊 for 二階段
+GET {{url}}/public/order/TA20241125801S3/appeal-success
+
+### getOrderSecondPrice 取得訂單金額 for 二階段
+GET {{url}}/public/order/TA20241125801S3/appeal-success/price
+
+### createSecondPayment 二階段付款(僅限藍新)
+POST {{url}}/public/order/TA20241125801S3/appeal-success/payment
+Content-Type: application/json
+
+{
+  "paymentProvider": "newebpay"
+}

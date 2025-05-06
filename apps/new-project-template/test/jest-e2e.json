@@ -1,0 +1,21 @@
+{
+  "moduleFileExtensions": [
+    "js",
+    "json",
+    "ts"
+  ],
+  "rootDir": ".",
+  "testEnvironment": "node",
+  "testRegex": ".e2e-spec.ts$",
+  "transform": {
+    "^.+\\.(t|j)s$": "ts-jest"
+  },
+  "moduleNameMapper": {
+    "@app/users/(.*)": "<rootDir>/../libs/users/src/$1",
+    "@app/users": "<rootDir>/../libs/users/src",
+    "@app/lib/(.*)": "<rootDir>/../libs/lib/src/$1",
+    "@app/lib": "<rootDir>/../libs/lib/src",
+    "@app/postgres/(.*)": "<rootDir>/../libs/postgres/src/$1",
+    "@app/postgres": "<rootDir>/../libs/postgres/src"
+  }
+}

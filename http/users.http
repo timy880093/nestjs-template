@@ -1,0 +1,61 @@
+### Create user
+POST {{url}}/users
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "username": "testtest1234",
+  "password": "B1qaz2wsx",
+  "email": "timmy+2@suodata.com",
+  "phone": "0916356039",
+  "ref": "autopass"
+}
+
+### Get user self
+GET {{url}}/users/me
+Authorization: Bearer {{token}}
+
+### Update user self
+PATCH {{url}}/users/me
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "username": "testtest",
+  "email": "test2@gmail.com",
+  "phone": "0917283687"
+}
+
+### send verify phone code
+POST {{url}}/users/verify-phone/send
+Content-Type: application/json
+
+{
+  "phone": "0916356039"
+}
+
+### check phone code
+POST {{url}}/users/verify-phone/check
+Content-Type: application/json
+
+{
+  "phone": "0916356039",
+  "code": "166202"
+}
+
+### send verify email code
+POST {{url}}/users/verify-email/send
+Content-Type: application/json
+
+{
+  "email": "timmy@suodata.com"
+}
+
+### check email code
+POST {{url}}/users/verify-email/check
+Content-Type: application/json
+
+{
+  "email": "timmy@suodata.com",
+  "code": "221594"
+}

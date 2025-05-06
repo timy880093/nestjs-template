@@ -1,0 +1,45 @@
+### Login by username and password
+POST {{url}}/auth/login
+Content-Type: application/json
+
+{
+  "identity": "testtest",
+  "password": "B1qaz2wsx"
+}
+
+> {%
+  client.test("Request executed successfully", function() {
+    client.assert(response.status >= 200 && response.status < 300, "Response status is not 200");
+    const token = response.body.data.accessToken;
+    client.log("Setting token: " + token);
+    client.global.set("token", token);
+  });
+%}
+
+### Login by line idToken
+POST {{url}}/auth/oauth2/line/token
+Content-Type: application/json
+
+{
+  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FjY2Vzcy5saW5lLm1lIiwic3ViIjoiVThiNDQ0ZjZkOTI1ZTM4ODcxNDBmYWViN2JlNTEwM2NmIiwiYXVkIjoiMjAwNTc5NDM4NCIsImV4cCI6MTcyMTIwMTg5OSwiaWF0IjoxNzIxMTk4Mjk5LCJhbXIiOlsibGluZXNzbyJdLCJuYW1lIjoiVGltbXkiLCJwaWN0dXJlIjoiaHR0cHM6Ly9wcm9maWxlLmxpbmUtc2Nkbi5uZXQvMGhkdl8tWldtVU8xbGlWQ3NvN1hWRURsNFJOVFFWZWowUkdqQnphQkpYTVc5Tk0zaGFWek44TjBRRE1Hc1lZU3dPWERGeVBCQlhNVHRJIiwiZW1haWwiOiJ0aW15ODgwMDkzQGdtYWlsLmNvbSJ9.Ywt8vWrP6bdPUhKWkuVjldwXXz9jXZrxqRiBLEHs4Ms"
+}
+
+### Login by line accessToken
+POST {{url}}/auth/oauth2/line/access-token
+Content-Type: application/json
+
+{
+  "email": "test@gmail.com",
+  "token": "eyJhbGciOiJIUzI1NiJ9.M8NjlYJ4BmZ3Izv4jKcrYXBm7Qc3jAfa0Vka3J3UTbwDPzUrgDznyGrKV46tzVaHlBX0_jquyk_4nqB0nzRaXviZmUGRzdKOr1z0SEBte9JSY7g-OnEKSgEXKoSzCwHXZ-760AuVJj_p-qxUmUmnvdbOoFFqcP_7eFbk09-u2Ns.jRlc9DYdR9g_uVYuIrm02KbGLytZVMgGMkdFxYa8SrU"
+}
+
+### @Post('reset-password')
+POST {{url}}/auth/reset-password
+Content-Type: application/json
+
+{
+  "email": "timmy@suodata.com"
+}
+
+### @Get('line/callback2/:uid/:email')
+GET {{url}}/auth/line/callback2/U8b444f6d925e3887140faeb7be5103cf/timy880093@gmail.com

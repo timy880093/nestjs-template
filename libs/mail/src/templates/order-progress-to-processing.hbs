@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>罰單申訴進度：處理中</title>
+	<style>
+		ul {
+			list-style-type: none; /* 移除原點符號 */
+			padding: 0;
+		}
+
+		ul li {
+			padding: 5px 0;
+			color: #555; /* 字體顏色設置為較淺的灰色，與黑色區分 */
+		}
+
+		ul li strong {
+			color: #333; /* 深灰色的標題文字 */
+		}
+
+		/*ul li:first-child {*/
+		/*	color: #000; !* 第一個列表項保持為黑色 *!*/
+		/*}*/
+
+		ul li:nth-child(odd) {
+			background-color: #f9f9f9; /* 奇數行設置為淺灰色背景 */
+		}
+
+		ul li:nth-child(even) {
+			background-color: #f2f2f2; /* 偶數行設置為更淺的灰色背景 */
+		}
+	</style>
+</head>
+<body>
+<div style="font-family: Arial, sans-serif; font-size: 1rem; color: #333;">
+	<p>您好，</p>
+	<p>感謝您對我們的信任。您的申訴案件已經開始處理，我們會在申訴主張撰寫完成後立即通知您最新進度。</p>
+	<br>
+
+	<ul>
+		<li><strong>申請日期：</strong>{{createdAt}}</li>
+		<li><strong>訂單號碼：</strong>{{orderNo}}</li>
+		<li><strong>進度狀態：</strong>處理中</li>
+		{{#each ticketSubmissions}}
+			{{#if @first}}
+				<li><strong>車牌號碼：{{this.licensePlateNo}}</strong></li>
+			{{/if}}
+			<li><strong>罰單號碼：{{this.ticketNo}}</strong></li>
+		{{/each}}
+	</ul>
+	<br>
+
+	<p>
+		接下來，我們將您的案件提交至相關監理單位後，會再寄送一封通知信，提供申訴送出後的相關資訊，方便您隨時追蹤案件審理進度。</p>
+	<p>感謝您的耐心與支持，如有其他問題或需要進一步的協助，請隨時與我們聯繫。</p>
+	<br>
+
+	<p>謝謝您的支持，祝行車平安！</p>
+	<p style="color: #555555">(此為系統通知，請勿回覆此信件)</p>
+</div>
+
+<table align="center" style="width: 100%; max-width: 600px; text-align: center;">
+	<tr>
+		<td>
+			<img src="https://ticket-appeal.jp-osa-1.linodeobjects.com/system/ticket-logo.jpg" alt="罰單申訴" style="width: 30%;" />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<span style="color: #777;"><strong>罰單申訴團隊</strong></span> |
+			<a href="https://xn--b2r864ev6gb9k.com/" style="color: #007bff; text-decoration: none;"> 官方網站</a>
+		</td>
+	</tr>
+	<tr>
+		<td align="center">
+			<a href="https://lawplayer.app.link/PGmlX9azLNb" target="_blank"><img src="https://5f73ae67ed.imgdist.com/pub/bfra/efd4tr9e/6at/tz4/r44/Line%20icon.png" width="32" height="auto" alt="LINE" title="LINE" style="display: block; height: auto; border: 0;"></a>
+		</td>
+	</tr>
+</table>
+<table align="center" style="width: 100%; text-align: center;">
+	<tr>
+		<td>
+			<a href="https://www.surveycake.com/s/yWq4M" style="display: inline-block; margin: 0 10px;">
+				<img src="https://ticket-appeal-template.jp-osa-1.linodeobjects.com/mail/滿意度2.jpg" alt="滿意度調查" style="width: 100%;" />
+			</a>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<a href="https://app.罰單申訴.com/gift-card" style="display: inline-block; margin: 0 10px;">
+				<img src="https://ticket-appeal-template.jp-osa-1.linodeobjects.com/mail/禮物卡.jpg" alt="禮品卡" style="width: 100%;" />
+			</a>
+		</td>
+	</tr>
+</table>
+
+</body>
+</html>

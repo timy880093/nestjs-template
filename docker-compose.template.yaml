@@ -1,0 +1,57 @@
+services:
+  api:
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    volumes:
+      - ~/volume_data/api/credentials.json:/app/credentials.json
+      - ~/volume_data/api/.env:/app/.env
+      - ~/volume_data/api/logs:/app/logs
+    depends_on:
+      - postgres
+      - redis
+    ports:
+      - ${PORT}:${PORT}
+
+  postgres:
+    restart: always
+    image: postgres:16
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+    ports:
+      - ${DATABASE_PORT}:${DATABASE_PORT}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+  redis:
+    restart: always
+    image: redis:7
+    env_file:
+      - .env
+    ports:
+      - ${REDIS_PORT}:${REDIS_PORT}
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - ~/volume_data/caddy/Caddyfile:/etc/caddy/Caddyfile
+      - ~/volume_data/caddy/site:/srv
+      - ~/volume_data/caddy/data:/data
+      - ~/volume_data/caddy/config:/config
+
+volumes:
+  pgdata:
+  redis_data:

@@ -1,0 +1,53 @@
+{
+  "id": "tr_UaYBk2VDUtMIogO1",
+  "object": "transaction",
+  "livemode": false,
+  "authentication_token": "tk_BWpaHzSiiZgW2Nskd_SP6sRp",
+  "aftee_transaction_no": "mcc00374-00001-241111000002",
+  "np_transaction_no": "mcc00374-00001-241111000002",
+  "shop_transaction_no": "2024060440137460",
+  "amount": 1000,
+  "japanese_yen_amount": null,
+  "authorization_result": 1,
+  "authorization_result_ng_reason": null,
+  "amount_refund_total": 0,
+  "registration_datetime": "2024-11-11 18:22:54",
+  "sales_settled_datetime": "2024-11-11 18:22:54",
+  "transaction_options": null,
+  "related_transaction": null,
+  "updated_transactions": [
+    "tr_XvynltMW28Ohi2RC"
+  ],
+  "description": null,
+  "customer": {
+    "object": "customer",
+    "customer_name": "timmy",
+    "customer_family_name": null,
+    "customer_given_name": null,
+    "phone_number": "0909999981",
+    "birthday": null,
+    "sex_division": null,
+    "company_name": null,
+    "department": null,
+    "zip_code": null,
+    "address": null,
+    "email": "timmy@suodata.com",
+    "total_purchase_count": null,
+    "total_purchase_amount": null,
+    "user_no": "timmy",
+    "information_code": null
+  },
+  "tenant": null,
+  "dest_customers": [],
+  "items": [
+    {
+      "object": "item",
+      "shop_item_id": "appeal-success-fee",
+      "item_name": "product2",
+      "item_price": 1000,
+      "item_count": 1,
+      "item_url": null
+    }
+  ],
+  "refunds": null
+}

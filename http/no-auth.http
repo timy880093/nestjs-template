@@ -1,0 +1,96 @@
+#@lineUid = U8b444f6d925e3887140faeb7be5103cf
+@lineUid = Uaa5ef109ea28e0d1449f867f3c7d1d5e
+@paymentStatus = unpaid
+@orderNo = TA20241209f1611
+@couponCode = 8114-3148-4B79-89D6
+
+### Create Tickets and Order
+POST {{url}}/no-auth/line/{{lineUid}}/ticket
+Content-Type: application/json
+
+{
+  "ticketInfos": [
+    {
+      "ticketNo": "ABC456117",
+      "assignedOfficeCity": "taipei",
+      "isTicketPaid": false,
+      "expiresAt": "2024/12/31"
+    }
+  ],
+  "assignedOfficeCity": "taipei",
+  "phone": "0916356039",
+  "email": "timy880093@gmail.com"
+}
+
+### Update Tickets and Order
+PATCH {{url}}/no-auth/line/{{lineUid}}/order/{{orderNo}}
+Content-Type: application/json
+
+{
+  "ownerName": "test",
+  "ownerIdNo": "A123456789",
+  "isOwnerSameAsDriver": true,
+  "vehicleType": "motorcycle",
+  "userStatement": "test description",
+  "additionalAttachmentIds": [
+    1,
+    3
+  ]
+}
+
+### Get Orders
+GET {{url}}/no-auth/line/{{lineUid}}/orders?paymentStatus={{paymentStatus}}
+
+### Get Orders paid and incomplete
+GET {{url}}/no-auth/line/{{lineUid}}/orders?progress=incomplete
+
+### Get Order for Payment
+GET {{url}}/no-auth/line/{{lineUid}}/order/{{orderNo}}
+
+### Get Order Price
+GET {{url}}/no-auth/line/{{lineUid}}/order/{{orderNo}}/price
+
+### Get Coupon Discount
+GET {{url}}/no-auth/line/{{lineUid}}/coupon/{{couponCode}}
+
+### Create First Payment
+POST {{url}}/no-auth/line/{{lineUid}}/order/{{orderNo}}/payment
+Content-Type: application/json
+
+{
+  "paymentProvider": "aftee",
+  "couponCode": "{{couponCode}}"
+}
+
+### Create First Payment for Zero
+POST {{url}}/no-auth/line/{{lineUid}}/order/{{orderNo}}/payment/zero
+Content-Type: application/json
+
+{
+  "paymentProvider": "aftee",
+  "couponCode": "{{couponCode}}"
+}
+
+### Newebpay Payment Return
+POST {{url}}/no-auth/payment/newebpay/return
+Content-Type: application/json
+
+{
+  "Status": "SUCCESS",
+  "MerchantID": "MS352623562",
+  "Version": "2.0",
+  "TradeInfo": "3710410f43696f387d4481cca492dd20db1541f0bf20cd2e72ef4eb5eb397e71ea12f600df243aef434268d2ecb9ebe2612d2b9baf3c9c8bf116a090d7f4c39f54f28a2433965f668dbac1397d297f7dde5655c455cc6aae72c4aa2d4329d4ef63fb96385117eb93ddb11d8f1c42933cb59f92a25f4699bd7cb32cdecd53f08f8d915487adc177e6f4f6dbc7351647316b6b35a6ce73d4c4183296844dabc00d5d2ba2bdb89fcd620bd06fb5a8f5d432ce58f9cb55cebab3adbc5152d6cdf8003830776a1b4e8f39b5a432fc6619876896c7c71b88d72408516e0da6838f2188635d149923b2477e221cc94e7b41b7fbe0a1384faa70c930761d96df7203524b3b174f552dfced2ba2c44498d42b413ea79cca6f3d522bff0eeada63ef275ef2d96d5338d85f579fec497bf3c7f3c2604fc3ff22bf0ecaabcb658dcc88cfe874ee0e961e77c89e2803868468e6b38b5c3e44d76e4a2dd54cb5681faf57316dfb987c1e4ab1bba193a355b6db931621cfaad58bf38f311b6d5be8ac6ebb62a23bc6ad7f99adf399628472032c49cc0c9b670f50bc34566a57ce9857bfa2c9b1dee607425d07c1af8f292156d1bc460c463772fdf33be9782ff8c0fa6bf936b8fdb2d47f61926506bc46542c5dcede9475b96819b0f107957dcee3750d447a86a856d97bff8ef5ee494e65cf9d8b111f3cadf077b3a9457b1cc443f496d4f6ee41",
+  "TradeSha": "BA8B11207C83C49A88F97814312629FAF16B6C040DB992C34E97CC110F596E5A"
+}
+
+### Aftee Payment Return
+GET {{url}}/no-auth/payment/aftee/return?id=tr_Ku5NNmWHNd6IDoS6&shop_transaction_no=TA20241125801T20e3c1&
+    authorization_result=1
+
+### track event
+POST {{url}}/no-auth/track
+Content-Type: application/json
+
+{
+  "event": "proxySearchTicket"
+}

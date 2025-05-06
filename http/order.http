@@ -1,0 +1,116 @@
+### Get self orders
+GET {{url}}/order
+Authorization: Bearer {{token}}
+
+### Get self orders by paymentStatus
+GET {{url}}/order?paymentStatus=successful,failed,unpaid
+Authorization: Bearer {{token}}
+
+### Get self order by id
+GET {{url}}/order/1
+Authorization: Bearer {{token}}
+
+### Update self order by id
+PATCH {{url}}/order/8
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "generatedClaim": "test",
+  "answeredClaim": {
+    "answer": "test",
+    "answerer": "test"
+  }
+}
+
+### @Get(':id/price')
+GET {{url}}/order/10/price
+Authorization: Bearer {{token}}
+
+### 取得訂單動態價格
+GET {{url}}/order/1505/dynamic-price
+Authorization: Bearer {{token}}
+
+###  @Get('coupon/:code')
+GET {{url}}/order/coupon/TEST50
+Authorization: Bearer {{token}}
+
+### @Post(':id/payment')
+POST {{url}}/order/1517/payment
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "paymentProvider": "aftee"
+}
+
+### @Post(':id/payment/link')
+POST {{url}}/order/1478/payment/link
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "isPriority": true
+}
+
+### @Post(':id/payment')
+POST {{url}}/order/1592/payment
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "paymentProvider": "aftee",
+  "couponCode": "d11",
+  "isPriority": false
+}
+
+### @Post(':id/payment/zero')
+POST {{url}}/order/60/payment/zero
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "couponCode": "TEST",
+  "isPriority": false
+}
+
+###  @Post('payment/notify')
+POST {{url}}/order/payment/notify
+Content-Type: application/json
+
+{
+  "Status": "SUCCESS",
+  "MerchantID": "MS352623562",
+  "Version": "2.0",
+  "TradeInfo": "3710410f43696f387d4481cca492dd20db1541f0bf20cd2e72ef4eb5eb397e71ea12f600df243aef434268d2ecb9ebe2612d2b9baf3c9c8bf116a090d7f4c39f54f28a2433965f668dbac1397d297f7dde5655c455cc6aae72c4aa2d4329d4efff5365514ffd1aca2e0fb51e5c01291556c61b299430b4eedbb4d343e7c1fad737a3851b1d382ea35af44b108e457e65675c81dc9fc861eced9bb7dcd2e05659a9a15c49a82ecf0e3418943d6b3873383d2c7f75d91b8cce83ef773af434a3c7d2f33314c87df25e75742f5f2b6a6728c8251bd493f43c2208807ee915094d88a54b48825236673e9e92433e61794ac5e4c607956beb351ec2b40df29a6e22fd505b8d40692fd9207dfd1ca215a5ce87a28a3c4f59cbb169561d9adbd4f879dcd5026ff3bd8d37ee62b6e668496e1b00faff648b9a00dfc1823b66106d9726bf2d4020a9b17eb954b3474e2842dd1148e2bfcf37b366dd3f84725050463c73e63fedb8a30bbd0d611c403200ace1f3678c7d35ed127a607a4202013e335ae683ea92145cb267513fb68c40c9eb2610b2d4a0a2cb6e8c5dcf4add3207afbfb8d1b1c6bc0d5ee64750528d7903602f2933c956b6fae4693ab2b90d4c3f8dc8b8cd5cc47fa7f911a6f6a804dee104d572429a4efdd42edbd9b9bea047330ca860e57feef55742b1b95c3d76af31ad1b5a861560927137723f24425543095e01dd4f",
+  "TradeSha": "CBB604C4F9C88BA5AEAF455D5E9B8C92227C89A9174D94797028A04406E269EB"
+}
+
+###  @Post('payment/return')
+POST {{url}}/order/payment/return
+Content-Type: application/json
+
+{
+  "Status": "SUCCESS",
+  "MerchantID": "MS352623562",
+  "Version": "2.0",
+  "TradeInfo": "3710410f43696f387d4481cca492dd20db1541f0bf20cd2e72ef4eb5eb397e71ea12f600df243aef434268d2ecb9ebe2612d2b9baf3c9c8bf116a090d7f4c39f54f28a2433965f668dbac1397d297f7dde5655c455cc6aae72c4aa2d4329d4ef63fb96385117eb93ddb11d8f1c42933cb59f92a25f4699bd7cb32cdecd53f08f8d915487adc177e6f4f6dbc7351647316b6b35a6ce73d4c4183296844dabc00d5d2ba2bdb89fcd620bd06fb5a8f5d432ce58f9cb55cebab3adbc5152d6cdf8003830776a1b4e8f39b5a432fc6619876896c7c71b88d72408516e0da6838f2188635d149923b2477e221cc94e7b41b7fbe0a1384faa70c930761d96df7203524b3b174f552dfced2ba2c44498d42b413ea79cca6f3d522bff0eeada63ef275ef2d96d5338d85f579fec497bf3c7f3c2604fc3ff22bf0ecaabcb658dcc88cfe874ee0e961e77c89e2803868468e6b38b5c3e44d76e4a2dd54cb5681faf57316dfb987c1e4ab1bba193a355b6db931621cfaad58bf38f311b6d5be8ac6ebb62a23bc6ad7f99adf399628472032c49cc0c9b670f50bc34566a57ce9857bfa2c9b1dee607425d07c1af8f292156d1bc460c463772fdf33be9782ff8c0fa6bf936b8fdb2d47f61926506bc46542c5dcede9475b96819b0f107957dcee3750d447a86a856d97bff8ef5ee494e65cf9d8b111f3cadf077b3a9457b1cc443f496d4f6ee41",
+  "TradeSha": "BA8B11207C83C49A88F97814312629FAF16B6C040DB992C34E97CC110F596E5A"
+}
+
+###  @Post('payment/aftee/notify')
+POST {{url}}/order/payment/aftee/notify
+Content-Type: application/json
+
+{
+  "test": "123"
+}
+
+###  AFTEE return
+GET {{url}}/order/payment/aftee/return?id=tr_Ku5NNmWHNd6IDoS6&shop_transaction_no=TA20241125801T20e3c1&
+    authorization_result=1
+
+
+### getSecondUnpaidOrder 取得該使用者未繳成效金的所有訂單
+GET {{url}}/order/appeal-success/unpaid
+Authorization: Bearer {{token}}

@@ -1,0 +1,81 @@
+### find all
+GET {{url}}/ticket
+Authorization: Bearer {{token}}
+
+### find one
+GET {{url}}/ticket/19
+Authorization: Bearer {{token}}
+
+### Create ticket
+POST {{url}}/ticket
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "isTicketPaid": true,
+  "expiresAt": "2024-09-30",
+  "isCompanyCar": false
+}
+
+### Update ticket draft
+PATCH {{url}}/ticket/16/draft
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "isTicketPaid": false,
+  "ownerName": "123"
+}
+
+### Update ticket
+PATCH {{url}}/ticket/16
+Authorization: Bearer {{token}}
+Content-Type: application/json
+// draft false can not modify to true
+
+{
+  "isTicketPaid": true,
+  "expiresAt": "2024-09-30",
+  "assignedOfficeCity": "taipei",
+  "ticketType": "electronic",
+  "ticketInfoFileIds": [
+    3
+  ],
+  "violationFileIds": [
+    1,
+    2
+  ],
+  "ownerName": "123",
+  "ownerIdNo": "A123456789",
+  "ownerBirthdate": "2024-06-01",
+  "driverName": "456",
+  "driverIdNo": "A123456789",
+  "driverBirthdate": "2024-06-01",
+  "isOwnerSameAsDriver": true,
+  "isTicketAssignedToDriver": true,
+  "violation1Article": "1",
+  "violation1Item": "1",
+  "violation1Clause": "1",
+  "violation2Article": "2",
+  "violation2Item": "2",
+  "violation2Clause": "2",
+  "violationFine": 600,
+  "violationFactType": "speeding",
+  "violateAt": "2024-06-01T08:38:00Z",
+  "ticketNo": "B12356000",
+  "licensePlateNo": "ABC-123",
+  "vehicleType": "motorcycle",
+  "isDraft": false
+}
+
+### Delete ticket
+DELETE {{url}}/ticket/2
+Authorization: Bearer {{token}}
+
+###  @Get('recognize/:id')
+POST {{url}}/ticket/1466/recognize
+Authorization: Bearer {{token}}
+
+### calculate penalty price
+GET {{url}}/ticket/16/price
+Authorization: Bearer {{token}}

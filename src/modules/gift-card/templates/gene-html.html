@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <body>
+    <form
+      id="paymentForm"
+      method="post"
+      action="https://ccore.newebpay.com/MPG/mpg_gateway"
+      style="display: none"
+    >
+      MID: <input name="MerchantID" value="MS352623562" readonly /><br />
+      Version: <input name="Version" value="2.0" readonly /><br />
+      TradeInfo:
+      <input
+        name="TradeInfo"
+        value="36c33aa12a15e1ddd03f88c47a187f083ad9b3eb29ba273777e2bd24bdcda827ff2ace7b95d44411d88cfb81fdf34b6b2d3f531c93e6cc95b8bccf0fcb5d7a48bf8a243f56dccd46442f0677f38f46df2684e4ae1dfa5b85498f93196c3d6e85de3b24140770bdb8bf51f4cda7c41ea0d1c260c30c4e3f28522eadaa078dab6572d85ad10235e5796a042b3e015d8e5a93e84ba0a43b445a3e85dc08c392a1d0eea6b593eec0ad5d4eb1f370950d772156ebda64df972597cd2ab1c08276d40da6351ae505c26539ee2d782e49ba0d46b0677854469e26dc1cc3467293397ce519811491adcb33da3b0e294c70b9ed0713ff68029042e485ffd9df00d680cc4155d8e55c1f3ddd074d3eda951636d6733976de21ce1d04066bed00e255fa7e5c3e3f64811f4e267605549a39ff530b9ee3b1daf72509166a5f857e654d0f9cd7558612e0696d4ecb3a17443f8542a6046470b0c261d16913c022f447e17463bbbe975587ca0018d1bbd27ffcc10dc0e8046a39d3761581c6ece3e229002cf36705cf84d848eb87c8db978ec5d0e2507adfd639eac16fc5484d8f267b61e8d66ffde1cf8f57bc52480428421ecb42cb363a36cde52feb932f7e958bb0fbda3041e4471519e55bc0d5beb4a48612c12636"
+        readonly
+      /><br />
+      TradeSha:
+      <input
+        name="TradeSha"
+        value="F3740DC5E0A9E2A37E0E4B62880FA76E11723EF49F703D8D3718C4B78AC141B4"
+        readonly
+      /><br />
+      <input type="submit" />
+    </form>
+
+    <script>
+      document.getElementById('paymentForm').submit(); // Submit the form automatically
+    </script>
+  </body>
+</html>

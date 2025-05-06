@@ -1,0 +1,7 @@
+### get delayed jobs
+GET {{url}}/mq/delayed
+Authorization: Bearer {{token}}
+
+### remove all jobs
+DELETE {{url}}/mq/all
+Authorization: Bearer {{token}}

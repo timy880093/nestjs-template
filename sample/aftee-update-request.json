@@ -1,0 +1,40 @@
+{
+  "updated_transactions": "tr_QRcLqpOCwg6215jV",
+  "authentication_token": "tk_ut23JI1oWFCVv4hDTr9zcYK_",
+  "amount": 4539,
+  "shop_transaction_no": "1685354884137Zx2FB217",
+  "user_no": "shop-user-no-001",
+  "sales_settled": true,
+  "transaction_options": [],
+  "description_trans": "",
+  "customer": {
+    "customer_name": "注文太郎",
+    "phone_number": "0912345678",
+    "address": "104台北市中山區復興北路378號5樓",
+    "email": "no@netprotections.co.jp",
+    "additional_info_code": "AAAA"
+  },
+  "dest_customers": [
+    {
+      "dest_customer_name": "haha",
+      "dest_address": "104台北市中山區復興北路378號5樓",
+      "dest_tel": "0900000000"
+    }
+  ],
+  "items": [
+    {
+      "shop_item_id": "KNOWLEDGE_COLLECTION-646c3031565ab774b7d55b26",
+      "item_name": "商品組合28",
+      "item_category": "商品",
+      "item_price": 4222,
+      "item_count": 1
+    },
+    {
+      "shop_item_id": "COURSE-62a9aea75235dc0022825fcc",
+      "item_name": "專心上課 (數位)",
+      "item_category": "商品",
+      "item_price": 317,
+      "item_count": 1
+    }
+  ]
+}

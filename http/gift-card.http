@@ -1,0 +1,3 @@
+### test giftCard
+GET {{url}}/gift-card/test/template
+Authorization: Bearer {{token}}

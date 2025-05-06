@@ -1,0 +1,214 @@
+### GET request to example server
+POST {{url}}/admin/invoice/reissue
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "tradeNos": [
+  ]
+}
+
+### updateOrderProgress to processing
+PATCH {{url}}/admin/order/1508/progress/processing
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "claimUserId": 899,
+  "processedAt": "2024-12-01T00:00:00.000+08:00",
+  "email": "timmy@suodata.com"
+}
+
+### updateOrderProgress to submitted
+PATCH {{url}}/admin/order/1508/progress/submitted
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "submittedAt": "2024-12-01T00:00:00.000+08:00",
+  "queryInfo": {
+    "caseNo": "test"
+  },
+  "ticketSubmissionIds": [
+    1307
+  ],
+  "email": "timmy@suodata.com"
+}
+
+### updateOrderProgress to done
+PATCH {{url}}/admin/order/1508/progress/done
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "resultUserId": 899,
+  "receivedAt": [
+    "2024-12-01T02:29:07.963Z"
+  ],
+  "ticketSubmissionIds": [
+    1307
+  ],
+  "appealResult": "rejected",
+  "appealExpiresAt": "",
+  "appealViolationPenalty": "",
+  "appealViolationFine": 1200,
+  "violationFine": 1800
+}
+
+### update ticket_submission bot proccessing
+PATCH {{url}}/admin/ticket-submission/1293/bot
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "botSubmittedStatus": "processing",
+  "botSubmittedAt": "2024-10-01",
+  "queryInfo": {
+    "caseNo": "test"
+  }
+}
+
+### update ticket_submission bot successful
+PATCH {{url}}/admin/ticket-submission/1293/bot
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "botSubmittedStatus": "successful",
+  "botSuccessAt": "2024-10-01"
+}
+
+### update ticket_submission bot failed
+PATCH {{url}}/admin/ticket-submission/1293/bot
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "botSubmittedStatus": "failed"
+}
+
+### admin import ticket
+POST {{url}}/admin/import
+Authorization: Bearer {{token}}
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file"; filename="test-google-sheet-data.json"
+Content-Type: application/json
+
+< ../sample/test.json
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+### admin import ticket
+POST {{url}}/admin/lost-import
+Authorization: Bearer {{token}}
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file"; filename="test-google-sheet-data.json"
+Content-Type: application/json
+
+< ../sample/1001.json
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+### success mail and second payment
+POST {{url}}/admin/order/TA202412098daa7/appeal-success/payment
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "email": "timmy@suodata.com"
+}
+
+### reject mail
+POST {{url}}/admin/order/TA202501174770e/appeal-fail/email
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "email": "timmy@suodata.com"
+}
+
+### :orderNo/appeal-success/price
+GET {{url}}/admin/order/TA20241125801S3/appeal-success/price
+Authorization: Bearer {{token}}
+
+### 將罰單重新分組
+POST {{url}}/admin/ticket/1866/re-group
+Authorization: Bearer {{token}}
+
+### 檢查訂單內的罰單是否都有辨識資料
+POST {{url}}/admin/order/1584/recognize
+Authorization: Bearer {{token}}
+
+### 複製罰單資訊
+POST {{url}}/admin/ticket/1565/duplicate
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "newTicketNo": "ZZJ036STX"
+}
+
+### 寄 edm
+POST {{url}}/admin/mail
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "subject": "【罰單申訴.com】test限時感恩！您的新年福金已備好",
+  "template": "gift-card-edm-for-approved",
+  "to": [
+    "timmy@suodata.com"
+  ]
+}
+
+### 寄送一次性禮物卡 edm
+POST {{url}}/admin/mail/gift-card-edm
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "subject": "【罰單申訴.com】新春送福金，感謝您填寫問卷！",
+  "template": "gift-card-edm-for-survey",
+  "to": [
+    "ticketappeal.law@gmail.com"
+  ]
+}
+
+### 寄送免費禮物卡 edm
+POST {{url}}/admin/mail/gift-card-edm-free
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "subject": "【罰單申訴.com】股東專屬，新春福利！",
+  "template": "gift-card-edm-for-shareholder",
+  "expires": "2y",
+  "value": 100,
+  "type": "percentage",
+  "count": 9,
+  "to": [
+    "hclin@gaofu.com.tw"
+  ]
+}
+
+### get track all event
+GET {{url}}/admin/track-event
+Authorization: Bearer {{token}}
+
+### get track event
+GET {{url}}/admin/track-event?startDate=20250110&endDate=20250111
+Authorization: Bearer {{token}}
+
+### resend gift card mail
+POST {{url}}/admin/gift-card/resend
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "email": "timmy@suodata.com",
+  "tradeNo": "EE85A996F4FF"
+}

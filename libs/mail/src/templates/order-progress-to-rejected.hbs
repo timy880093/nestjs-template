@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>罰單申訴進度：申訴失敗</title>
+	<style>
+		ul {
+			list-style-type: none; /* 移除原點符號 */
+			padding: 0;
+		}
+
+		ul li {
+			padding: 5px 0;
+		}
+
+		ul li strong {
+			color: #333; /* 深灰色的標題文字 */
+		}
+
+		ul li {
+			color: #555; /* 字體顏色設置為較淺的灰色，與黑色區分 */
+		}
+
+		/*ul li:first-child {*/
+		/*	color: #000; !* 第一個列表項保持為黑色 *!*/
+		/*}*/
+
+		ul li:nth-child(odd) {
+			background-color: #f9f9f9; /* 奇數行設置為淺灰色背景 */
+		}
+
+		ul li:nth-child(even) {
+			background-color: #f2f2f2; /* 偶數行設置為更淺的灰色背景 */
+		}
+	</style>
+</head>
+<body>
+<div style="font-family: Arial, sans-serif; font-size: 1rem; color: #333;">
+	<p>您好，</p>
+	<p>協助您申訴的結果已取得公文，結果未能符合您的期望，我們為此表示遺憾。</p>
+	<p>如果您有其他需求或疑問，請隨時與我們聯繫，我們將竭誠為您提供服務。</p>
+	<p>感謝您的支持與理解。</p>
+	<br>
+
+	<p><strong>相關資訊如下：</strong></p>
+	<ul>
+		<li><strong>申請日期：</strong>{{createdAt}}</li>
+		<li><strong>訂單號碼：</strong>{{orderNo}}</li>
+		<li><strong>進度狀態：</strong>申訴被拒</li>
+		{{#each ticketSubmissions}}
+			{{#if @first}}
+				<li><strong>違規車號：</strong>{{this.licensePlateNo}}</li>
+			{{/if}}
+			<li><strong>罰單編號：</strong>{{this.ticketNo}}</li>
+			<li><strong>罰金：{{this.appealViolationFine}}</strong></li>
+			<li><strong>新應到案日期：{{this.appealExpiresAt}}</strong></li>
+		{{/each}}
+	</ul>
+	<br>
+
+	<p><strong>#提醒：</strong>於新應到案日前執行罰責</p>
+
+<p>
+	此外也提供您幾組罰單申訴的 {{ giftCardDiscount }} 元優惠序號，可於下次申訴時使用，亦可分享給親朋好友使用：
+	{{#each codes}}
+		<p><strong>{{this}}</strong></p>
+	{{/each}}
+
+	請注意！每組序號僅能使用一次，期限為 {{ giftCardExpiresDays }} 天，請記得在期限內使用喔！
+	</p>
+	<br>
+
+	<p>
+		相關網站：
+		<a href="https://tpcmv.thb.gov.tw/MessageConfirmPage.aspx?n=9777&sms=13712&pgn=1D95B2A4C316480B449D2B265F812515">台北市</a>
+		｜<a href="https://www.tad.ntpc.gov.tw/vio_query.aspx">新北市</a>
+		｜<a href="https://tad.tycg.gov.tw/PeopleUse/Description?type=RefundApplication">桃園市</a>
+		｜<a href="https://www.gov.tw/News_Content_2_515704">台中市</a>
+		｜<a href="https://onestop.tainan.gov.tw/eservice/apply_mode_directions2?itemId=1991">台南市</a>
+		｜<a href="https://kgo.kcg.gov.tw/apply/info/S2021012600001?applyType=E">高雄市</a>
+		｜<a href="https://www.mvdis.gov.tw/m3-emv-car/fee/rtn#gsc.tab=0">監理服務網（其他縣市）</a>
+	</p>
+	<br>
+
+	<p>若對申訴結果有疑慮，再請使用 line 客服聯繫我們，這邊將提供給您電子檔案參考。</p>
+	<p>謝謝您的支持，祝行車平安！</p>
+	<p style="color: #555555">(此為系統通知，請勿回覆此信件)</p>
+
+	<p>只要1分鐘，<a href="https://www.surveycake.com/s/yWq4M">點我填寫滿意度</a>，拿專屬折扣！</p>
+</div>
+
+
+<table align="center" style="width: 100%; max-width: 600px; text-align: center;">
+	<tr>
+		<td>
+			<img src="https://ticket-appeal.jp-osa-1.linodeobjects.com/system/ticket-logo.jpg" alt="罰單申訴" style="width: 30%;" />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<span style="color: #777;"><strong>罰單申訴團隊</strong></span> |
+			<a href="https://xn--b2r864ev6gb9k.com/" style="color: #007bff; text-decoration: none;"> 官方網站</a>
+		</td>
+	</tr>
+	<tr>
+		<td align="center">
+			<a href="https://lawplayer.app.link/PGmlX9azLNb" target="_blank"><img src="https://5f73ae67ed.imgdist.com/pub/bfra/efd4tr9e/6at/tz4/r44/Line%20icon.png" width="32" height="auto" alt="LINE" title="LINE" style="display: block; height: auto; border: 0;"></a>
+		</td>
+	</tr>
+</table>
+
+<!--<table align="center" style="width: 100%; text-align: center;">-->
+<!--	<tr>-->
+<!--		<td>-->
+<!--			<a href="https://www.surveycake.com/s/yWq4M" style="display: inline-block; margin: 0 10px;">-->
+<!--				<img src="https://ticket-appeal-template.jp-osa-1.linodeobjects.com/mail/滿意度2.jpg" alt="滿意度調查" style="width: 100%;" />-->
+<!--			</a>-->
+<!--		</td>-->
+<!--	</tr>-->
+<!--</table>-->
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+### Get all user
+GET {{url}}/admin/users
+Authorization: Bearer {{token}}
+
+### Get user
+GET {{url}}/admin/users/5
+Authorization: Bearer {{token}}
+
+### Update user
+PATCH {{url}}/admin/users/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "password": "B1qaz2wsx",
+  "phone": "0916356039",
+  "ref": "autopass"
+}
+
+### Delete user
+DELETE {{url}}/users/2
+Authorization: Bearer {{token}}

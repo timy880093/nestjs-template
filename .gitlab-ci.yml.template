@@ -1,0 +1,63 @@
+ image: docker:latest
+
+ services:
+   - docker:dind  # excute docker command in docker
+
+ variables:
+   DOCKER_HOST: tcp://docker:2375/
+   IMAGE_NAME: registry.gitlab.com/suodata-product/ticket-appeal-api-new
+   IMAGE_TAG: ${CI_COMMIT_SHA}  # default auto generate uuid
+
+ stages:
+   - build
+   - test
+ #  - deploy_dev
+ #  - deploy_prod
+
+ build_image:
+   stage: build
+   before_script: # access gitlab image registry, $CI_REGISTRY default is registry.gitlab.com
+     - echo $CI_REGISTRY
+     - echo $CI_REGISTRY_USER
+     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+   script:
+     - docker build -t $IMAGE_NAME:$IMAGE_TAG .
+     - docker push $IMAGE_NAME:$IMAGE_TAG
+   rules:
+     - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main"  # On merge requests targeting main
+     - if: $CI_COMMIT_BRANCH == "dev"  # On dev branch pushes
+
+ test:
+   stage: test
+   script:
+     - echo 'test'
+     - echo 'user:' $CI_REGISTRY_USER
+     - echo 'pass:' $CI_REGISTRY_PASSWORD
+     - echo 'registry:' $CI_REGISTRY
+     - echo 'image:' $IMAGE_NAME:$IMAGE_TAG
+     - echo 'merge_to:' $CI_MERGE_REQUEST_TARGET_BRANCH_NAME
+     - echo 'commit_to:' $CI_COMMIT_BRANCH
+
+ #deploy_dev:
+ #  stage: deploy_dev
+ #  #  before_script:
+ #  # Add SSH known_hosts entry
+ #  #    - mkdir -p ~/.ssh
+ #  #    - ssh-keyscan -H 172.104.112.239 >> ~/.ssh/known_hosts
+ #  #    - echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+ #  #    - chmod 600 ~/.ssh/id_rsa
+ #  before_script:
+ #    - eval $(ssh-agent -s)
+ #    - ssh-add <(echo "$SERVER_PRIVATE_KEY")
+ #  script:
+ #    - ssh -o StrictHostKeyChecking=no root@172.104.112.239 "cd ticket-appeal-api-new && docker-compose pull && docker-compose up -d"
+ #  #    - ssh root@172.104.112.239 "cd ticket-appeal-api-new && docker-compose pull && docker-compose up -d"
+ #  rules:
+ #    - if: $CI_COMMIT_BRANCH == "dev"  # On dev branch pushes
+
+ #deploy_prod:
+ #  stage: deploy_prod
+ #  script:
+ #    - ssh root@172.233.81.160 "docker-compose pull && docker-compose up -d"
+ #  rules:
+ #    - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main"  # On merge requests targeting main

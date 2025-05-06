@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>補齊罰單提醒通知</title>
+</head>
+<body>
+<div style="font-family: Arial, sans-serif; color: #333;">
+	<p>請儘速補齊罰單資料，避免影響您的申訴權益：</p>
+	<a href="{{url}}">點我補齊資料</a>
+	<br>
+	<ul>
+		{{#each ticketSubmissions}}
+			<li><strong>[{{@index}}] 罰單編號：</strong>{{this.ticketNo}}</li>
+		{{/each}}
+	</ul>
+	<br>
+	<p style="color: #555555">如有罰單申訴相關疑問，請點擊下方 line 圖示，與客服尋求幫助，謝謝！</p>
+	<p style="color: #555555">(此為系統通知，請勿回覆此信件)</p>
+</div>
+
+<table align="center" style="width: 100%; max-width: 600px; text-align: center;">
+	<tr>
+		<td>
+			<img src="https://ticket-appeal.jp-osa-1.linodeobjects.com/system/ticket-logo.jpg" alt="罰單申訴" style="width: 30%;" />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<span style="color: #777;"><strong>罰單申訴團隊</strong></span> |
+			<a href="https://xn--b2r864ev6gb9k.com/" style="color: #007bff; text-decoration: none;"> 官方網站</a>
+		</td>
+	</tr>
+	<tr>
+		<td align="center">
+			<a href="https://lawplayer.app.link/PGmlX9azLNb" target="_blank"><img src="https://5f73ae67ed.imgdist.com/pub/bfra/efd4tr9e/6at/tz4/r44/Line%20icon.png" width="32" height="auto" alt="LINE" title="LINE" style="display: block; height: auto; border: 0;"></a>
+		</td>
+	</tr>
+</table>
+</body>
+</html>

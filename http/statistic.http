@@ -1,0 +1,16 @@
+### track event
+POST {{url}}/public/statistic/track-event
+Content-Type: application/json
+
+{
+  "event": "proxySearchTicket"
+}
+
+### get super8 ref-tag
+GET {{url}}/public/statistic/super8/ref-tag?lineUid=U8b444f6d925e3887140faeb7be5103cf&originalDisplayName=白柚子
+x-api-key: GH^@5tMx8YjOC9
+
+### get event-log
+GET {{url}}/statistic/event-log
+Authorization: Bearer {{token}}
+

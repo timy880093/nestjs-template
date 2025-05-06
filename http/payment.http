@@ -1,0 +1,22 @@
+### (newebpay) get newebpay payment link
+GET {{url}}/payment/newebpay_credit_card?tradeNo=2024060440137445&totalAmount=1000&product=product&email=timmy@suodata.com
+#https://credible-infinite-bug.ngrok-free.app/api/v1/payment/newebpay_credit_card?tradeNo=2024060440137445&totalAmount=1000&product=product&email=timmy@suodata.com
+### (aftee) get newebpay payment link
+GET {{url}}/payment/aftee?tradeNo=2024060440137446&totalAmount=1000&product=product&email=timmy@suodata.com
+https://credible-infinite-bug.ngrok-free.app/api/v1/payment/aftee?tradeNo=2024060440137451&totalAmount=1000&product=product&email=timmy@suodata.com&phone=0909999981&username=timmy
+#https://ticket.api.test.suodata.com/api/v1/payment/aftee?tradeNo=2024060440137451&totalAmount=1000&product=product&email=timmy@suodata.com&phone=0909999981&username=timmy
+#https://ct-auth.np-pay.com/settlement/2024060440137445?identifier={identifier}
+
+### update payment
+PATCH {{url}}/payment/aftee
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+}
+
+
+
+### cancel payment
+PATCH {{url}}/payment/aftee/tr_yom4xj7cxaS1C9yF/cancel
+Authorization: Bearer {{token}}

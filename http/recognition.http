@@ -1,0 +1,11 @@
+### recognition image
+POST {{url}}/recognition/image
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "paths": [
+    "/Users/timmy/Documents/code/ticket-appeal-api-new/ticketttt/Super_8_Message_3.jpeg",
+    "/Users/timmy/Documents/code/ticket-appeal-api-new/ticketttt/Super_8_message_1.jpeg"
+  ]
+}
