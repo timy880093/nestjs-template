@@ -18,7 +18,69 @@
     "strictFunctionTypes": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@app/postgres": [
+        "libs/postgres/src"
+      ],
+      "@app/postgres/*": [
+        "libs/postgres/src/*"
+      ],
+      "@app/invoice": [
+        "libs/invoice/src"
+      ],
+      "@app/invoice/*": [
+        "libs/invoice/src/*"
+      ],
+      "@app/common": [
+        "libs/common/src"
+      ],
+      "@app/common/*": [
+        "libs/common/src/*"
+      ],
+      "@app/auth": [
+        "libs/auth/src"
+      ],
+      "@app/auth/*": [
+        "libs/auth/src/*"
+      ],
+      "@app/mail": [
+        "libs/mail/src"
+      ],
+      "@app/mail/*": [
+        "libs/mail/src/*"
+      ],
+      "@app/payment": [
+        "libs/payment/src"
+      ],
+      "@app/payment/*": [
+        "libs/payment/src/*"
+      ],
+      "@app/redis": [
+        "libs/redis/src"
+      ],
+      "@app/redis/*": [
+        "libs/redis/src/*"
+      ],
+      "@app/s3": [
+        "libs/s3/src"
+      ],
+      "@app/s3/*": [
+        "libs/s3/src/*"
+      ],
+      "@app/sms": [
+        "libs/sms/src"
+      ],
+      "@app/sms/*": [
+        "libs/sms/src/*"
+      ],
+      "@app/mq": [
+        "libs/mq/src"
+      ],
+      "@app/mq/*": [
+        "libs/mq/src/*"
+      ]
+    }
   },
   "include": [
     "**/*.ts",
@@ -27,7 +89,5 @@
   "exclude": [
     "node_modules",
     "dist"
-    //    "**/*.spec.ts",
-//    "**/**/*.spec.ts"
   ]
 }

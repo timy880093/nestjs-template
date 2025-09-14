@@ -1,270 +1,155 @@
-<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
-<a name="readme-top"></a>
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
+# 專案開發文件
 
+## 專案概述
+基於 NestJS 框架的新專案模板，包含多個應用程式和共享函式庫。
 
+## 專案結構
 
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+### 應用程式 (apps)
 
+#### new-project-template
+主要應用程式，包含以下模組：
 
+- **users 模組**
+  - 功能：使用者管理，包括查詢、建立使用者等
+  - 主要元件：
+    - `users.controller.ts`: 處理使用者相關的 HTTP 請求
+    - `users.service.ts`: 實現使用者業務邏輯
+    - `users.repository.ts`: 處理使用者資料儲存和檢索
+    - `entity/user.model.ts`: 使用者資料模型
+    - `dto/user.dto.ts`: 資料傳輸物件
 
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
+- **mq-consumer 模組**
+  - 功能：訊息佇列消費者
+  - 主要元件：
+    - `mq-consumer.service.ts`: 處理訊息佇列相關業務邏輯
 
-  <h3 align="center">Best-README-Template</h3>
+- **upload 模組**
+  - 功能：檔案上傳管理
+  - 主要元件：
+    - `upload.service.ts`: 處理檔案上傳業務邏輯
+    - `upload.repository.ts`: 管理上傳檔案的資料儲存
+    - `entity/upload-files.model.ts`: 上傳檔案資料模型
 
-  <p align="center">
-    An awesome README template to jumpstart your projects!
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
-  </p>
-</div>
+### 共享函式庫 (libs)
 
+#### payment
+支付相關功能函式庫，支援多種支付方式：
 
+- **設定檔 (`payment.config.ts`)**
+  - 支援的支付方式：
+    - NewebPay: 台灣支付服務
+    - Aftee: 分期付款服務
+    - EzPay: 電子支付服務
+  - 環境變數設定：
+    - 各支付平台的 API 金鑰
+    - 回呼 URL 設定
+    - 商戶 ID 等
 
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
+#### auth
+認證相關功能函式庫：
+- **認證服務 (`auth.service.ts`)**
+  - 支援本地登入認證
+  - JWT 權杖產生與驗證
+- **Line 認證服務 (`line.service.ts`)**
+  - 支援 Line OAuth2 認證
+  - 處理 Line 登入回呼
 
+#### 其他共享函式庫
+- **mail**: 郵件發送功能
+- **redis**: Redis 快取服務
+- **sms**: 簡訊發送服務
+- **mq**: 訊息佇列服務
+- **common**: 通用工具和例外處理
+- **s3**: S3 儲存服務，用於檔案上傳
 
+## 資料庫
+專案使用 Sequelize ORM 與資料庫互動，主要模型包括：
+- `UserModel`: 使用者資料模型
+- `UploadFilesModel`: 上傳檔案資料模型
 
-<!-- ABOUT THE PROJECT -->
-## About The Project
+## 開發指南
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
-
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
-
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
-
-Use the `BLANK_README.md` to get started.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-### Built With
-
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-
-* [![Next][Next.js]][Next-url]
-* [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- GETTING STARTED -->
-## Getting Started
-
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
-### Installation
-
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+### 環境設定
+1. 確保已安裝 Node.js 和 pnpm
+   ```bash
+   npm install -g pnpm
    ```
-3. Install NPM packages
-   ```sh
-   npm install
+2. 安裝相依套件：
+   ```bash
+   pnpm install
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+3. 設定環境變數（參考 `.env.example`）
+
+### 啟動應用
+1. 開發模式啟動：
+   ```bash
+   pnpm run start:dev
+   ```
+2. 生產模式啟動：
+   ```bash
+   pnpm run build
+   pnpm run start:prod
    ```
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+### API 文件
+- 啟動應用後，可透過 Swagger UI 存取 API 文件：`http://localhost:3000/api`
 
+### 測試
+1. 執行單元測試：
+   ```bash
+   pnpm run test
+   ```
+2. 執行端對端測試：
+   ```bash
+   pnpm run test:e2e
+   ```
 
+## 功能特點
 
-<!-- USAGE EXAMPLES -->
-## Usage
+### 使用者管理
+- 使用者註冊與登入
+- 手機和電子郵件驗證碼功能
+- 使用者資料快取（Redis）
+- Line 社群登入整合
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+### 檔案上傳
+- 支援圖片和影片上傳
+- 使用 AWS S3 儲存檔案
+- 檔案類型驗證
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+### 支付整合
+- 多種支付方式整合
+- 支付回呼處理
+- 交易紀錄管理
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+## 部署指南
 
+### Docker 部署
+1. 建構 Docker 映像檔：
+   ```bash
+   docker build -t new-project-template .
+   ```
+2. 執行容器：
+   ```bash
+   docker run -p 3000:3000 new-project-template
+   ```
 
+### 環境變數設定
+部署前需設定以下關鍵環境變數：
+- 資料庫連線資訊
+- Redis 連線資訊
+- AWS S3 設定
+- 各支付平台設定
+- Line OAuth2 設定
 
-<!-- ROADMAP -->
-## Roadmap
+## 維護與故障排除
 
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
-- [ ] Multi-language Support
-    - [ ] Chinese
-    - [ ] Spanish
+### 日誌管理
+- 使用 Pino 日誌記錄器
+- 日誌等級可透過環境變數設定
 
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- CONTACT -->
-## Contact
-
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
-
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
-
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-* [Malven's Grid Cheatsheet](https://grid.malven.co/)
-* [Img Shields](https://shields.io)
-* [GitHub Pages](https://pages.github.com)
-* [Font Awesome](https://fontawesome.com)
-* [React Icons](https://react-icons.github.io/react-icons/search)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: images/screenshot.png
-[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
-[Next-url]: https://nextjs.org/
-[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
-[React-url]: https://reactjs.org/
-[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
-[Vue-url]: https://vuejs.org/
-[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
-[Angular-url]: https://angular.io/
-[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
-[Svelte-url]: https://svelte.dev/
-[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
-[Laravel-url]: https://laravel.com
-[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
-[Bootstrap-url]: https://getbootstrap.com
-[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
-[JQuery-url]: https://jquery.com 
+### 常見問題解決
+- 資料庫連線問題：檢查連線字串和資料庫狀態
+- Redis 快取問題：確保 Redis 服務正常運作
+- 檔案上傳失敗：檢查 S3 設定和權限設定

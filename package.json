@@ -7,19 +7,19 @@
   "license": "UNLICENSED",
   "scripts": {
     "build": "nest build",
-    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\" \"libs/**/*.ts\"",
+    "format": "prettier --write \"apps/**/*.ts\" \"libs/**/*.ts\"",
     "start": "nest start",
     "start:local": "NODE_ENV=local nest start --watch",
     "start:prod-local": "NODE_ENV=production-local nest start --watch",
     "start:dev": "NODE_ENV=development nest start --watch",
     "start:debug": "nest start --debug --watch",
-    "start:prod": "NODE_ENV=production node dist/main",
+    "start:prod": "node dist/apps/new-project-template/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "test:e2e": "jest --config ./apps/new-project-template/test/jest-e2e.json",
     "migrate": "npx sequelize-cli db:migrate",
     "migrate:generate": "npx sequelize-cli migration:generate",
     "migrate:undo": "npx sequelize-cli db:migrate:undo",
@@ -134,7 +134,21 @@
     "coverageDirectory": "./coverage",
     "testEnvironment": "node",
     "roots": [
-      "<rootDir>/src/"
-    ]
+      "<rootDir>/libs/",
+      "<rootDir>/apps/"
+    ],
+    "moduleNameMapper": {
+      "^@app/lib(|/.*)$": "<rootDir>/libs/lib/src/$1",
+      "^@app/postgres(|/.*)$": "<rootDir>/libs/postgres/src/$1",
+      "^@app/invoice(|/.*)$": "<rootDir>/libs/invoice/src/$1",
+      "^@app/common(|/.*)$": "<rootDir>/libs/common/src/$1",
+      "^@app/auth(|/.*)$": "<rootDir>/libs/auth/src/$1",
+      "^@app/mail(|/.*)$": "<rootDir>/libs/mail/src/$1",
+      "^@app/payment(|/.*)$": "<rootDir>/libs/payment/src/$1",
+      "^@app/redis(|/.*)$": "<rootDir>/libs/redis/src/$1",
+      "^@app/s3(|/.*)$": "<rootDir>/libs/s3/src/$1",
+      "^@app/sms(|/.*)$": "<rootDir>/libs/sms/src/$1",
+      "^@app/mq(|/.*)$": "<rootDir>/libs/mq/src/$1"
+    }
   }
 }

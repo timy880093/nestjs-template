@@ -1,21 +1,19 @@
+import { HttpModule } from '@nestjs/axios';
 import { Module } from '@nestjs/common';
-import { AuthService } from './auth.service';
-import { UsersModule } from '../../../apps/new-project-template/src/modules/users/users.module';
-import { AuthController } from './auth.controller';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
-import { LocalStrategy } from './passport/local.strategy';
-import { JwtStrategy } from './passport/jwt.strategy';
-import { ConfigModule, ConfigService } from '@nestjs/config';
+import { UsersModule } from '../../../apps/new-project-template/src/modules/users/users.module';
+import { AuthController } from './auth.controller';
+import { AuthService } from './auth.service';
 import { LineService } from './line.service';
-import { HttpModule } from '@nestjs/axios';
+import { JwtStrategy } from './passport/jwt.strategy';
 import { LineStrategy } from './passport/line.strategy';
-import { MailLogModule } from '../../../apps/new-project-template/src/modules/mail-log/mail-log.module';
+import { LocalStrategy } from './passport/local.strategy';
 
 @Module({
   imports: [
     UsersModule,
-    MailLogModule,
     PassportModule,
     HttpModule,
     JwtModule.registerAsync({
