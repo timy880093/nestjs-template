@@ -3,7 +3,7 @@ import { CreationAttributes, Transaction, WhereOptions } from 'sequelize';
 import { Includeable } from 'sequelize/types/model';
 
 // 返回 dto 泛型的版本
-export abstract class GenericDtoRepository<M extends Model<M>, D> {
+export abstract class PostgresDtoRepository<M extends Model<M>, D> {
   protected constructor(
     private readonly modelClass: ModelCtor<M>,
     private readonly dtoClass: new (model: M) => D,

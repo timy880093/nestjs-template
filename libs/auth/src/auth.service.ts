@@ -9,9 +9,6 @@ import { SendMailTemplateReq } from '@app/mail/dto/send-mail-template.req';
 import { NotfoundException } from '@app/common/exception/notfound.exception';
 import { InjectPinoLogger, PinoLogger } from 'nestjs-pino';
 import { UserInfo } from '@app/common/decorator/token-user.decorator';
-import { MailLogCategory } from '../../../apps/new-project-template/src/modules/mail-log/dto/mail-log.enum';
-import { MailLogService } from '../../../apps/new-project-template/src/modules/mail-log/mail-log.service';
-import { MailLogDto } from '../../../apps/new-project-template/src/modules/mail-log/dto/mail-log.dto';
 
 @Injectable()
 export class AuthService {
@@ -19,7 +16,6 @@ export class AuthService {
     @InjectPinoLogger(AuthService.name)
     private readonly logger: PinoLogger,
     private usersService: UsersService,
-    private mailLogService: MailLogService,
     private jwtService: JwtService,
   ) {
     this.logger.debug({ authConfig: authConfig() }, 'Init auth config: ');
@@ -47,7 +43,7 @@ export class AuthService {
     }
   }
 
-  async resetPasswordEmail(email: string): Promise<MailLogDto> {
+  async resetPasswordEmail(email: string) {
     try {
       const userDto = await this.usersService.findOneLikeEmail(email);
       if (!userDto) {
@@ -67,13 +63,9 @@ export class AuthService {
         },
       });
 
-      const sendResponseDto = await this.mailLogService.sendTemplate(
-        sendTemplateRequestDto,
-        MailLogCategory.RESET_PASSWORD,
-      );
       // if (CommonUtil.isArray(sendResponseDto.errors))
       //   throw new ServerException('Send email failed');
-      return sendResponseDto;
+      return;
     } catch (e) {
       this.logger.error('resetPasswordEmail error: ', e.message);
       return null;

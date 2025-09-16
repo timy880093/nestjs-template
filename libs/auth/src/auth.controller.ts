@@ -1,8 +1,10 @@
-import { AuthService } from './auth.service';
-import { LocalAuthGuard } from '@app/common/guard/local-auth.guard';
 import { Public } from '@app/common/decorator/public.decorator';
+import {
+  TokenUser,
+  UserInfo,
+} from '@app/common/decorator/token-user.decorator';
 import { LineAuthGuard } from '@app/common/guard/line-auth.guard';
-import { LineService } from './line.service';
+import { LocalAuthGuard } from '@app/common/guard/local-auth.guard';
 import {
   Body,
   Controller,
@@ -11,17 +13,14 @@ import {
   Request,
   UseGuards,
 } from '@nestjs/common';
-import { TokenRes } from './dto/token.res';
 import { ApiBody, ApiOperation, ApiParam, ApiResponse } from '@nestjs/swagger';
-import { UserDto } from '../../../apps/new-project-template/src/modules/users/dto/user.dto';
-import { SignInDto } from './dto/sign-in.dto';
-import { Oauth2SignInDto } from './dto/oauth2-sign-in.dto';
 import { UserUpdateDto } from '../../../apps/new-project-template/src/modules/users/dto/user-update.dto';
-import {
-  TokenUser,
-  UserInfo,
-} from '@app/common/decorator/token-user.decorator';
-import { MailLogDto } from '../../../apps/new-project-template/src/modules/mail-log/dto/mail-log.dto';
+import { UserDto } from '../../../apps/new-project-template/src/modules/users/dto/user.dto';
+import { AuthService } from './auth.service';
+import { Oauth2SignInDto } from './dto/oauth2-sign-in.dto';
+import { SignInDto } from './dto/sign-in.dto';
+import { TokenRes } from './dto/token.res';
+import { LineService } from './line.service';
 
 @Controller('auth')
 export class AuthController {
@@ -118,7 +117,7 @@ export class AuthController {
     description: 'The record has been successfully reset password.',
   })
   @ApiBody({ type: UserUpdateDto })
-  async resetPassword(@Body() { email }: any): Promise<MailLogDto> {
+  async resetPassword(@Body() { email }: any) {
     return this.authService.resetPasswordEmail(email);
   }
 }
